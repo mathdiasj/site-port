@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dias Estudio</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+   <link rel="icon" type="image/png" href="/Imagens/fivicon.png">  
+  <!-- GSAP e plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollSmoother.min.js"></script>
+</head>
+
+<body>
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+
+      <header>
+        <nav>
+          <div class="logo">
+            <img src="/Imagens/logo-rodape.png" alt="Logo Dias - Designer Gráfico" />
+          </div>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+          <section id="home" class="hero">
+            <video autoplay muted loop playsinline class="hero-background-video">
+              <source src="./Imagens/7565462-hd_2048_1080_25fps.mp4" type="video/mp4" />
+              Seu navegador não suporta a tag de vídeo.
+            </video>
+            <div class="hero-text-overlay">
+              <h1 class="bemvindo">Bem vindo</h1>
+            </div>
+          </section>
+
+        <section id="sobre" class="about section-animate">
+          <div class="content-wrapper">
+            <div class="about-grid">
+              <div class="about-image">
+                <img src="./Imagens/1747414450438.jpeg" alt="Matheus Dias" class="profile-pic" />
+              </div>
+              <div class="about-text">
+                <h2 class="letra-animada">Sobre Mim</h2>
+                <p>Sou Matheus Dias, diretor de arte apaixonado por design gráfico, branding e comunicação visual. Acredito que design vai além da estética: é sobre intenção, impacto e narrativa. Com uma abordagem que une sensibilidade criativa e estratégia, ajudo marcas a expressarem sua identidade de forma autêntica e memorável.
+
+Do conceito à execução, mergulho em cada projeto com dedicação, atenção ao detalhe e sede por inovação — seja criando identidades visuais, vídeos ou conteúdo.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="portfolio" class="portfolio section-animate">
+          <div class="content-wrapper">
+            <h2 class="letra-animada">Meus Projetos</h2>
+          </div>
+          <div class="logo-gallery-grid">
+            <div class="logo-item"><img src="./Imagens/natu.jpg" alt="Naturalle Alimentos" /></div>
+            <div class="logo-item"><img src="./Imagens/Umi.jpg" alt="UMIYA" /></div>
+            <div class="logo-item"><img src="./Imagens/fort.jpg" alt="UMIYA" /></div>
+            <div class="logo-item"><img src="./Imagens/cur.jpg" alt="UMIYA" /></div>
+          </div>
+        </section>
+
+        <section id="contato" class="contact section-animate">
+          <div class="content-wrapper">
+            <h2 class="vamos letra-animada">Vamos Conversar?</h2>
+            <p>Estou sempre aberto a novas ideias e parcerias...</p>
+            <div class="social-links">
+              <a href="#" target="_blank">LinkedIn</a>
+              <a href="#" target="_blank">Behance</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 DIAS. Todos os direitos reservados.</p>
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
