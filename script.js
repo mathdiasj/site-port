@@ -191,7 +191,8 @@ const mensagens = [
   "欢迎",            // Chinês simplificado
   "ようこそ",        // Japonês
   "환영합니다",      // Coreano
-  "Добро пожаловать" // Russo
+  "Добро пожаловать", // Russo
+  "Shalom"  // Hebraico (forma informal)
 ];
 
 const elementoBemVindo = document.querySelector('.bemvindo');
