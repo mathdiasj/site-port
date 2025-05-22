@@ -63,7 +63,7 @@ document.querySelectorAll('h2').forEach(h2 => {
     });
 });
 
-// Efeito rastro do mouse
+// Efeito rastro do mouse (agora oculto até o preloader sumir)
 const numTrailElements = 20;
 const trailElements = [];
 const colors = ["#FFFFFF"];
@@ -73,6 +73,7 @@ for (let i = 0; i < numTrailElements; i++) {
     el.classList.add('mouse-trail-element');
     el.style.backgroundColor = colors[0];
     el.style.opacity = (1 - i / numTrailElements).toFixed(2);
+    el.style.display = 'none';  // Oculta inicialmente
     document.body.appendChild(el);
     trailElements.push({ el: el, x: 0, y: 0 });
 }
@@ -100,6 +101,21 @@ gsap.ticker.add(() => {
         x = trail.x;
         y = trail.y;
     });
+});
+
+// Quando o site terminar de carregar, exibe o mouse trail
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+
+        // Mostra os elementos do rastro do mouse
+        trailElements.forEach(trail => {
+            trail.el.style.display = 'block';
+        });
+
+    }, 2000); // mesmo tempo do preloader
 });
 
 // Parallax em elementos com .parallax
@@ -156,4 +172,64 @@ gsap.to(".hero-background-video", {
     }
 });
 
-console.log("Animações GSAP carregadas com sucesso!");
+
+// Toggle menu hamburguer
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+const mensagens = [
+  "Bem vindo",       // Português
+  "Welcome",         // Inglês
+  "Bienvenue",       // Francês
+  "Willkommen",      // Alemão
+  "Bienvenido",      // Espanhol
+  "Benvenuto",       // Italiano
+  "欢迎",            // Chinês simplificado
+  "ようこそ",        // Japonês
+  "환영합니다",      // Coreano
+  "Добро пожаловать" // Russo
+];
+
+const elementoBemVindo = document.querySelector('.bemvindo');
+
+let indice = 0;
+
+function trocarMensagemAnimada() {
+  // Fade out com GSAP
+  gsap.to(elementoBemVindo, {
+    opacity: 0,
+    duration: 0.5,
+    onComplete: () => {
+      // Troca o texto
+      elementoBemVindo.textContent = mensagens[indice];
+      indice = (indice + 1) % mensagens.length;
+      // Fade in
+      gsap.to(elementoBemVindo, { opacity: 1, duration: 0.5 });
+    }
+  });
+}
+
+// Inicializa com a primeira mensagem e opacity 1
+elementoBemVindo.textContent = mensagens[indice];
+indice++;
+
+// Troca a mensagem a cada 3 segundos com animação
+setInterval(trocarMensagemAnimada, 3000);
+
+
+
+console.log("Animações GSAP carregadas com sucesso...");
+
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+
+    // Aguarda um pequeno tempo para o efeito, ex: 2 segundos
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+    }, 2000); // 2000 ms = 2 segundos
+});
+

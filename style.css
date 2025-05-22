@@ -1,15 +1,46 @@
 :root {
   --cor-fundo: #FFFFFF;
-  --cor-texto: #1A1A1A;
+  --cor-texto: #ffffff;
   --cor-destaque: #E0E0E0;
   --cor-preto: #000000;
   --fonte-serif: 'Playfair Display', serif;
   --font-sans: sans-serif;
 }
 
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black; /* fundo da introdução */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#preloader img {
+  width: 150px; /* ou o tamanho desejado */
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
 body {
   font-family: var(--fonte-serif);
-  background-color: var(--cor-fundo);
+  background-color: black;
   color: var(--cor-texto);
   line-height: 1.6;
   scroll-behavior: smooth;
@@ -46,17 +77,31 @@ h3 {
 }
 
 /* Seções com fundo preto */
-.portfolio, .contact {
-  background-color: #000;
+.portfolio {
+  background-color: #ffffff;
   color: var(--cor-fundo);
 }
 
-.portfolio h2, .contact h2,
-.portfolio p, .contact p,
-.portfolio a, .contact a,
-.portfolio h3, .contact h3 {
-  color: var(--cor-fundo) !important;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+.contact {
+  background-color: rgb(0, 0, 0);
+  color: black;
+}
+
+
+.portfolio h2, 
+.portfolio p, 
+.portfolio a, 
+.portfolio h3{
+  color: rgb(0, 0, 0) !important;
+
+}
+
+.contact h2,
+.contact p, 
+.contact a,
+.contact h3 {
+  color: rgb(255, 255, 255) !important;
+
 }
 
 /* Botão de contato */
@@ -102,14 +147,14 @@ footer {
 }
 
 header {
-  background-color: #000;
+  background-color: black; /* Alterado para transparente */
   padding: 1em 0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 nav {
@@ -167,7 +212,7 @@ section {
 }
 
 .hero {
-  height: 100vh;
+  height: 120vh; /* Alterado para 120% da altura da viewport */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -188,10 +233,18 @@ section {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 2fr; /* imagem à esquerda, texto à direita */
   gap: 3em;
   align-items: center;
   text-align: left;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 1em;
+    text-align: center;
+  }
 }
 
 .profile-pic {
@@ -264,13 +317,19 @@ section {
 }
 
 .mouse-trail-element {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  pointer-events: none;
-  mix-blend-mode: difference;
-  z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 80%);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease-out, opacity 0.3s ease-out;
+    opacity: 0.8;
+    z-index: 9999;
 }
 
 h2 span {
@@ -320,24 +379,184 @@ footer p {
   text-decoration: underline;
 }
 
-/* Ajuste para o vídeo hero para dispositivos móveis: esconder por performance */
-@media (max-width: 600px) {
-  .hero-background-video {
-    display: none;
-  }
-  .hero {
-    background: url('./Imagens/hero-fallback.jpg') center center / cover no-repeat;
-  }
-}
-
 /* Pequena melhoria para o texto da seção sobre */
 .about-text p {
   font-size: 1.1em;
   line-height: 1.7;
-  color: var(--cor-texto);
+  color: white;
 }
 
 /* Pequena margem para o título do contato */
 .vamos {
   margin-bottom: 0.5em;
+}
+
+/* Botão de menu (hamburguer) */
+.menu-toggle {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  font-size: 2em;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+
+/* Mostrar o botão no mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Menu de navegação padrão (desktop) */
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Menu escondido no mobile */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #000;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 150px;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+
+  /* Menu ativo - mostrar */
+  .nav-menu.active {
+    display: flex;
+  }
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cor-fundo);
+  display: block;
+  padding: 0.5em 1em;
+}
+
+nav ul li a:hover {
+  color: var(--cor-destaque);
+}
+
+/* Ajuste para que o nav tenha position relative para posicionar menu absoluto */
+nav {
+  position: relative;
+}
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 1em;
+    text-align: center;
+  }
+
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+  }
+
+  .logo-gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1em;
+  }
+
+  section {
+    padding: 4em 1em;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .hero {
+    height: 80vh;
+    padding: 2em 1em;
+  }
+
+  .hero-text-overlay {
+    text-align: center;
+    padding: 1em;
+  }
+
+  .social-links a {
+    margin: 0 0.5em;
+    font-size: 0.9em;
+  }
+
+  .btn-contato {
+    padding: 0.8em 1.5em;
+    font-size: 0.8em;
+  }
+
+
+@media (max-width: 480px) {
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  .logo-gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .hero {
+    height: 60vh;
+  }
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 60px; /* ou ajusta conforme a altura do header */
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.menu.active {
+  display: flex;
+}
+
+nav ul.show-menu {
+    display: flex;
+}
+
+nav {
+    position: relative;
 }

@@ -4,28 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dias Estudio</title>
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="./style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-   <link rel="icon" type="image/png" href="/Imagens/fivicon.png">  
-  <!-- GSAP e plugins -->
+  <link rel="icon" type="image/png" href="./Imagens/fivicon.png">  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/gsap@3/dist/ScrollSmoother.min.js"></script>
 </head>
 
 <body>
+  <div id="preloader">
+  <img src="./Imagens/logo-rodape.png" alt="Logo Dias Estúdio">
+</div>
   <div id="smooth-wrapper">
     <div id="smooth-content">
 
       <header>
         <nav>
           <div class="logo">
-            <img src="/Imagens/logo-rodape.png" alt="Logo Dias - Designer Gráfico" />
+            <img src="./Imagens/logo-rodape.png" alt="Logo Dias - Designer Gráfico" />
           </div>
-          <ul>
+          <!-- Botão hamburguer -->
+          <button class="menu-toggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <!-- Menu principal -->
+          <ul class="nav-menu">
             <li><a href="#home">Home</a></li>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#portfolio">Portfólio</a></li>
@@ -35,15 +43,15 @@
       </header>
 
       <main>
-          <section id="home" class="hero">
-            <video autoplay muted loop playsinline class="hero-background-video">
-              <source src="./Imagens/7565462-hd_2048_1080_25fps.mp4" type="video/mp4" />
-              Seu navegador não suporta a tag de vídeo.
-            </video>
-            <div class="hero-text-overlay">
-              <h1 class="bemvindo">Bem vindo</h1>
-            </div>
-          </section>
+        <section id="home" class="hero">
+          <video autoplay muted loop playsinline class="hero-background-video">
+            <source src="./Imagens/7565462-hd_2048_1080_25fps.mp4" type="video/mp4" />
+            Seu navegador não suporta a tag de vídeo.
+          </video>
+          <div class="hero-text-overlay">
+            <h1 class="bemvindo">Bem vindo</h1>
+          </div>
+        </section>
 
         <section id="sobre" class="about section-animate">
           <div class="content-wrapper">
@@ -64,12 +72,12 @@ Do conceito à execução, mergulho em cada projeto com dedicação, atenção a
         <section id="portfolio" class="portfolio section-animate">
           <div class="content-wrapper">
             <h2 class="letra-animada">Meus Projetos</h2>
-          </div>
-          <div class="logo-gallery-grid">
-            <div class="logo-item"><img src="./Imagens/natu.jpg" alt="Naturalle Alimentos" /></div>
-            <div class="logo-item"><img src="./Imagens/Umi.jpg" alt="UMIYA" /></div>
-            <div class="logo-item"><img src="./Imagens/fort.jpg" alt="UMIYA" /></div>
-            <div class="logo-item"><img src="./Imagens/cur.jpg" alt="UMIYA" /></div>
+            <div class="logo-gallery-grid">
+              <div class="logo-item"><img src="./Imagens/natu.jpg" alt="Naturalle Alimentos" /></div>
+              <div class="logo-item"><img src="./Imagens/Umi.jpg" alt="UMIYA" /></div>
+              <div class="logo-item"><img src="./Imagens/fort.jpg" alt="Fort" /></div>
+              <div class="logo-item"><img src="./Imagens/cur.jpg" alt="Cur" /></div>
+            </div>
           </div>
         </section>
 
@@ -92,6 +100,6 @@ Do conceito à execução, mergulho em cada projeto com dedicação, atenção a
     </div>
   </div>
 
-  <script src="/script.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
